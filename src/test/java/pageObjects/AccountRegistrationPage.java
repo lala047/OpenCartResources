@@ -16,7 +16,7 @@ public class AccountRegistrationPage extends BasePage{
 	@FindBy (id= "input-lastname")public WebElement txtlastname;
 	@FindBy (id= "input-email")public WebElement txtemail;
 	@FindBy (id= "input-password")public WebElement txtpassword;
-	@FindBy (id= "input-newsletter-no")public WebElement rdnewsletter;
+	@FindBy (xpath= "//input[@id='input-newsletter-yes']")public WebElement rdnewsletter;
 	@FindBy (xpath= "//input[@name='agree']")public WebElement chckdpolicy;
 	@FindBy (xpath= "//button[text()='Continue']")public WebElement btncontinue;
 	
@@ -35,15 +35,21 @@ public class AccountRegistrationPage extends BasePage{
 		txtpassword.sendKeys(pwd);
 	}
 	public void setNewsletter() {
-		rdnewsletter.click();
+	JavascriptExecutor js = (JavascriptExecutor)driver;
+	js.executeScript("arguments[0].click()", rdnewsletter);
+		//rdnewsletter.click();
 	}
 	public void setPrivacypolicy() {
-		chckdpolicy.click();
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click()", chckdpolicy);
+		//chckdpolicy.click();
 	
 	}
 	public void clickContinue() {
 	JavascriptExecutor js = (JavascriptExecutor)driver;
 	js.executeScript("arguments[0].click()", btncontinue);
+	//	btncontinue.click();
+		
 	
 		
 		

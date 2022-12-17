@@ -1,9 +1,11 @@
 package testCases;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import pageObjects.AccountRegistrationPage;
 import pageObjects.HomePage;
+import pageObjects.MyAccountPage;
 import testBase.BaseClass;
 
 public class TC_001_AccountRegistrationTest extends BaseClass {
@@ -15,21 +17,31 @@ public class TC_001_AccountRegistrationTest extends BaseClass {
 		hp.ClickMyAccount();
 		hp.ClickRegister();
 		AccountRegistrationPage regpage= new AccountRegistrationPage(driver);
-		regpage.setFirstName("John");
-		regpage.setLastName("Philip");
+		regpage.setFirstName(randomeString().toUpperCase());   // This will set random name using the randome String method I put in the base class
+		//regpage.setFirstName("John");  (or use this hardcoding)
+		regpage.setLastName(randomeString().toUpperCase());
+		//regpage.setLastName("Philip");
 		regpage.setEmail(randomeString()+"@gmail.com");
-		regpage.setPassword("lala");
+		regpage.setPassword(randomeString().toUpperCase());
+		//regpage.setPassword("lala");
 		regpage.setNewsletter();
-		
 		regpage.setPrivacypolicy();
-		
 		regpage.clickContinue();
+		Thread.sleep(3000);
+		MyAccountPage actpg= new MyAccountPage(driver);
+String confmsg=actpg.getConfirmationMsg();
 		
-	Thread.sleep(3000);
-	
+		if(confmsg.equals("Your Account Has Been Created!"))
+		{
+			logger.info("Account Registration Success ");
+			Assert.assertTrue(true);
+		}
+		else
+		{
+			logger.error("Account Registration Failed ");
+			Assert.assertTrue(false);
 		
-		
-		
+		}
 	}
 
 }
