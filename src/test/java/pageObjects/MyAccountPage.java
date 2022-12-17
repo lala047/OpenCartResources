@@ -4,27 +4,23 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class MyAccountPage extends BasePage {
+public class MyAccountPage extends BasePage {  // This is the Landing Page
 	
 	public MyAccountPage(WebDriver driver) {
 		super(driver);
 		
 	}	
-		@FindBy (xpath= "//h1[text()= 'Your Account Has Been Created!']")public WebElement msgConfirmation; 
+		@FindBy (xpath= "//h2[normalize-space()='My Account']")public WebElement msgHeading; 
 		
 		
-		public String getConfirmationMsg()
+		
+		public boolean isMyAccountPageExists()   // MyAccount Page heading display status
 		{
-		try
-		{
-		return (msgConfirmation.getText());
-		}
-		catch(Exception e)
-		{
-		return(e.getMessage());
-		}
-
-
+			try {
+				return (msgHeading.isDisplayed());
+			} catch (Exception e) {
+				return (false);
+			}
 		}
 }
 

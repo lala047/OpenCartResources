@@ -11,7 +11,8 @@
 	<test name="OpenCart Test">
 		<parameter name="browser" value="chrome" />
 		<classes>
-		<class name="testCases.TC_001_AccountRegistrationTest" />
+			 <!--<class name="testCases.TC_001_AccountRegistrationTest" />-->
+		<class name="testCases.TC_002_Login" />
 			 <!-- <class name="com.inetbanking.testcases.TC_LoginDDT_002" />-->
 			 <!--<class name="com.inetbanking.testcases.TC_AddCustomerTest_003" />-->
 		</classes>

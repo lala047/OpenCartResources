@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 import pageObjects.AccountRegistrationPage;
 import pageObjects.HomePage;
-import pageObjects.MyAccountPage;
+import pageObjects.RegistrationConfirmationPage;
 import testBase.BaseClass;
 
 public class TC_001_AccountRegistrationTest extends BaseClass {
@@ -28,9 +28,9 @@ public class TC_001_AccountRegistrationTest extends BaseClass {
 		regpage.setPrivacypolicy();
 		regpage.clickContinue();
 		Thread.sleep(3000);
-		MyAccountPage actpg= new MyAccountPage(driver);
-String confmsg=actpg.getConfirmationMsg();
+		RegistrationConfirmationPage regconf= new RegistrationConfirmationPage(driver);
 		
+		String confmsg=regconf.getConfirmationMsg(); // (obj.method)
 		if(confmsg.equals("Your Account Has Been Created!"))
 		{
 			logger.info("Account Registration Success ");
